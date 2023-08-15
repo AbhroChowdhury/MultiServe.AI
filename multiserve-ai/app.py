@@ -6,6 +6,7 @@ app = Flask(__name__)
 def hello():
     return 'Hello from Flask!'
 
-@app.route('/api/data')
+@app.route('/api/homepage')
 def get_data():
-    return {'message': 'Data from Flask!'}
+    return {'message': 'MultiServe.AI', 'description': 'MultiServe.AI allows you to leverage AI on a multitude of different structured and unstructured data sources, such as Youtube, Reddit, Excel, and more.'}
+

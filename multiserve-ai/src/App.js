@@ -1,15 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './App.css'; 
 
 function App() {
-  const [data, setData] = useState('');
+  const [appName, setAppName] = useState('');
+  const [appDescription, setAppDescription] = useState('');
 
   useEffect(() => {
-    axios.get('/api/data') 
+    axios.get('/api/homepage') 
       .then(response => {
-        setData(response.data.message); 
+        setAppName(response.data.message);
+        setAppDescription(response.data.description);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -18,8 +19,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Data from Flask:</h1>
-      <p>{data}</p>
+      <header className="App-header">
+        {/* Display MultiServe.AI */}
+        <h1 className="text-3xl font-semibold">{appName}</h1>
+        
+        {/* Short description */}
+        <p className="text-lg mt-2">
+          {appDescription}
+        </p>
+      </header>
     </div>
   );
 }
